@@ -1,0 +1,15 @@
+# 🎮 WG Simulator 3000
+
+![Logo](/build/wp-content/uploads/intro-bg.svg)
+
+Compile typescript
+
+```
+npx webpack -w
+```
+
+Run local server in build
+
+```
+npx http-server . -p=9080
+```

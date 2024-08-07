@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WG Simulator 3000</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="game-bundle.js"></script>
+    <!-- Load fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800&family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- <body> -->
+    <main>
+      <div
+        id="mock-up-container"
+        class="wg-sim-mockup-container reduce-height-0-to-800"
+      >
+        <div
+          id="game-container"
+          class="wg-sim-game-container wg-sim-retro-border"
+        >
+          <!-- Canvas will be generated here -->
+          <div
+            id="touch-controller"
+            class="wg-sim-touch-controller"
+            hidden="true"
+          ></div>
+          <div
+            id="in-game-info-container"
+            class="wg-sim-in-game-info-container"
+          >
+            <div class="wg-sim-in-game-info-button-wrapper">
+              <div
+                id="in-game-info-pause-button"
+                class="wg-sim-in-game-info-button"
+              ></div>
+              <div
+                id="in-game-info-mute-button"
+                class="wg-sim-in-game-info-button"
+              ></div>
+            </div>
+            <div
+              id="in-game-info-score-container"
+              class="wg-sim-in-game-info-score"
+            >
+              <span
+                id="in-game-info-score-label"
+                class="wg-sim-in-game-info-score-label"
+              ></span>
+              <span
+                id="in-game-info-hit-collectable"
+                class="wg-sim-in-game-info-hit-collectable"
+                hidden="true"
+              ></span>
+            </div>
+          </div>
+
+          <div
+            id="loading-progress-container"
+            class="wg-sim-progress-bar-container"
+          >
+            <span id="loading-progress" class="wg-sim-progress-bar"></span>
+            <span
+              id="loading-progress-label"
+              class="wg-sim-progress-bar-label"
+            ></span>
+          </div>
+          <div id="game-over-container" class="wg-sim-game-over-container">
+            <div id="game-over-panel" class="wg-sim-game-over-panel">
+              <div
+                id="game-over-scroll-container"
+                class="wg-sim-game-over-scrollable"
+              >
+                <div class="wg-sim-game-over-page-one">
+                  <div class="wg-sim-score-wrapper">
+                    <span id="score-text" class="wg-sim-score-text"></span>
+                    <span id="score-val" class="wg-sim-score-val"></span>
+                  </div>
+
+                  <div class="wg-sim-game-over-controls-wrapper">
+                    <div class="wg-sim-divider"></div>
+                    <div class="wg-sim-game-change-player">
+                      <span class="wg-sim-select-player-text"
+                        >Select player</span
+                      >
+                      <!-- <form>
+                      <select
+                        class="wg-sim-dropdown"
+                        name="dropdown"
+                        id="character-selector"
+                      ></select>
+                    </form> -->
+                      <button
+                        class="wg-sim-dropdown"
+                        name="dropdown"
+                        id="character-selector"
+                      ></button>
+                    </div>
+                    <div class="wg-sim-btn-wrapper">
+                      <button
+                        id="quit-btn"
+                        class="wg-sim-btn-c wg-sim-btn-lg"
+                        disabled="true"
+                      >
+                        Exit
+                      </button>
+                      <button
+                        id="restart-btn"
+                        class="wg-sim-btn-third wg-sim-btn-xl"
+                      >
+                        Play
+                      </button>
+                    </div>
+                  </div>
+                  <svg
+                    class="wg-sim-arrow-right-bounce"
+                    width="35"
+                    height="34"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xml:space="preserve"
+                    overflow="hidden"
+                  >
+                    <g transform="translate(-247 -225)">
+                      <path
+                        d="M12.7712 26.9829 11.2685 25.4805 19.7714 16.9777 11.2682 8.47237 12.7709 6.97 22.7765 16.9777 12.7712 26.9829Z"
+                        fill="#34135C"
+                        transform="matrix(1.02941 0 0 1 247 225)"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div class="wg-sim-game-over-page-two">
+                  <div
+                    id="game-over-score-table-container"
+                    class="wg-sim-game-over-score-table-container"
+                    style="display: none"
+                  >
+                    <div class="wg-sim-h2" style="margin: 0.25rem 0 0 0">
+                      Highscores
+                    </div>
+                    <div class="wg-sim-game-over-table-wrapper">
+                      <table class="wg-sim-game-over-score-table">
+                        <colgroup>
+                          <col span="1" style="width: 10%" />
+                          <col span="1" style="width: 60%" />
+                          <col span="1" style="width: 30%" />
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th>Nr.</th>
+                            <th>Name</th>
+                            <th>Score</th>
+                          </tr>
+                        </thead>
+                        <tbody id="wg-sim-game-over-score-table"></tbody>
+                      </table>
+                    </div>
+                    <div
+                      id="game-over-filter-scores-wrapper"
+                      class="wg-sim-game-over-filter-scores-wrapper"
+                    >
+                      <select
+                        id="filter-scores-selector"
+                        class="wg-sim-game-over-filter-scores-dropdown"
+                        name="dropdown"
+                      >
+                        <option value="ALL">All time</option>
+                        <option value="WEEK">Last week</option>
+                        <option value="MONTH">Last month</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div
+                    id="game-over-loading-scores-container"
+                    class="wg-sim-game-over-loading-scores-container"
+                  >
+                    <div class="wg-sim-loading-spinner">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                    <div>Loading scores...</div>
+                  </div>
+                  <div
+                    id="game-over-error-scores-container"
+                    class="wg-sim-game-over-loading-scores-container"
+                    style="display: none"
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        fill="#de38c8"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"
+                        />
+                        <path
+                          d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"
+                        />
+                      </svg>
+                    </div>
+                    <div style="margin-bottom: 1rem; text-align: center">
+                      This demo is not supporting score statistics.
+                    </div>
+                    <button
+                      id="game-over-retry-load-scores"
+                      class="wg-sim-btn-c"
+                      disabled="true"
+                    >
+                      Retry
+                    </button>
+                  </div>
+                </div>
+                <div class="wg-sim-game-over-page-indicator-wrapper">
+                  <div
+                    id="game-over-page-indicator-one"
+                    class="wg-sim-game-over-page-indicator"
+                  ></div>
+                  <div
+                    id="game-over-page-indicator-two"
+                    class="wg-sim-game-over-page-indicator"
+                  ></div>
+                </div>
+              </div>
+              <div
+                id="player-alias-container"
+                class="wg-sim-player-alias-container"
+              >
+                <div class="wg-sim-player-alias-wrapper">
+                  <div class="wg-sim-player-alias-label">
+                    Enter name to upload your score:
+                  </div>
+                  <input
+                    id="player-alias-input"
+                    type="text"
+                    maxlength="20"
+                    placeholder="Name / Alias"
+                    class="wg-sim-player-alias-input"
+                  />
+                  <div class="wg-sim-player-alias-btn-wrapper">
+                    <button
+                      id="player-alias-skip-button"
+                      class="wg-sim-btn-secondary"
+                    >
+                      Skip
+                    </button>
+                    <button
+                      id="player-alias-submit-button"
+                      class="wg-sim-btn-third"
+                    >
+                      Upload
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <dialog
+                id="select-player-dialog-container"
+                class="wg-sim-select-player-dialog-container"
+              >
+                <span class="wg-sim-select-player-dialog-grid">
+                  <div
+                    id="select-player-dialog-esc"
+                    class="wg-sim-select-player-dialog-esc"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      fill="#33135c"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="wg-sim-select-player-dialog-header wg-sim-h2">
+                    Select Player
+                  </div>
+                  <div class="wg-sim-select-player-dialog-carousel">
+                    <svg
+                      id="select-player-dialog-carousel-nav-left"
+                      class="wg-sim-select-player-dialog-carousel-nav"
+                      style="left: 0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      fill="#33135c"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"
+                      />
+                    </svg>
+                    <svg
+                      id="select-player-dialog-carousel-nav-right"
+                      class="wg-sim-select-player-dialog-carousel-nav"
+                      style="right: 0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      fill="#33135c"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"
+                      />
+                    </svg>
+                    <div
+                      id="select-player-dialog-carousel-scroll-container"
+                      class="wg-sim-select-player-dialog-carousel-scroll-container"
+                    ></div>
+                  </div>
+                  <div class="wg-sim-select-player-dialog-info-section">
+                    <span class="wg-sim-h2">Player:</span>
+                    <span
+                      id="select-player-dialog-player-name"
+                      class="wg-sim-select-player-dialog-player-name"
+                    ></span>
+                  </div>
+                  <button
+                    id="select-player-dialog-submit-button"
+                    class="wg-sim-btn-third wg-sim-select-player-dialog-submit"
+                  >
+                    Done
+                  </button>
+                </span>
+              </dialog>
+            </div>
+          </div>
+          <div id="game-intro-container" class="wg-sim-game-intro-container">
+            <div id="game-intro-panel" class="wg-sim-game-intro-panel">
+              <button id="start-btn" class="wg-sim-btn-third wg-sim-btn-flex">
+                <svg
+                  width="26"
+                  height="26"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xml:space="preserve"
+                  overflow="hidden"
+                  class="wg-sim-btn-icon"
+                >
+                  <defs>
+                    <clipPath id="clip0">
+                      <rect x="329" y="267" width="26" height="26" />
+                    </clipPath>
+                  </defs>
+                  <g clip-path="url(#clip0)" transform="translate(-329 -267)">
+                    <path
+                      d="M334.227 269.979 349.773 280 334.227 290.021Z"
+                      fill="white"
+                    />
+                  </g>
+                </svg>
+                Play
+                <span style="width: 20px"></span>
+              </button>
+            </div>
+          </div>
+          <div
+            id="control-tutorial-container"
+            class="wg-sim-control-tutorial-container"
+          >
+            <img
+              id="control-tutorial-img"
+              class="wg-sim-control-tutorial-img"
+              src="http://alex-portfolio.local/wp-content/uploads/touch-indicator.gif"
+              alt="WG Simulator 3000"
+            />
+            <span
+              id="control-tutorial-label"
+              class="wg-sim-control-tutorial-label"
+              >Tap to jump</span
+            >
+          </div>
+          <div class="load-game-btn-container">
+            <div class="load-game-label">Try it out now!</div>
+            <button
+              id="restart-btn"
+              class="wg-sim-btn-third wg-sim-btn-xl load-game-btn"
+              onclick="WgSimulator.setup()"
+            >
+              Load Demo
+            </button>
+          </div>
+        </div>
+        <img
+          id="mockup"
+          class="wg-sim-phone-mockup hide-0-to-320 hide-0-to-800-height"
+          src="http://alex-portfolio.local/wp-content/uploads/mockup_phone.png"
+        />
+      </div>
+    </main>
+  </body>
+</html>
