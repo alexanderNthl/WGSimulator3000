@@ -1,7 +1,5 @@
 # 🎮 WG Simulator 3000
 
-![Logo](/build/wp-content/uploads/intro-bg.svg)
-
 WG Simulator 3000 is a mini jump and run game set in a shared student flat. This version is adapted for a demo integrated into a Wordpress website and serves as additional information about the project.
 
 ## 🛠️ Get Started
