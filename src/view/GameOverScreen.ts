@@ -12,8 +12,7 @@ export class GameOverScreen {
   private STR_NEW_HIGHSCORE = "New Highscore!";
   private STR_SCORE = "Score";
 
-  private BACKGROUND_IMAGE_PATH =
-    "http://alex-portfolio.local/wp-content/uploads/design_game_over_bg.svg";
+  private BACKGROUND_IMAGE_PATH = "/assets/uploads/design_game_over_bg.svg";
 
   private CONFIG: Config;
 

@@ -18,22 +18,6 @@
   z-index: -1;
 }
 
-@media (max-width: 320px) {
-  .hide-0-to-320 {
-    display: none;
-  }
-}
-
-@media (max-width: 400px) and (max-height: 800px) {
-  .hide-0-to-800-height {
-    display: none;
-  }
-
-  .reduce-height-0-to-800 {
-    height: 400px;
-  }
-}
-
 .wg-sim-game-container {
   position: relative;
   margin: 0 auto;
@@ -1193,5 +1177,29 @@
   }
   75% {
     opacity: 0.5;
+  }
+}
+
+@media (max-width: 320px) {
+  .hide-0-to-320 {
+    display: none;
+  }
+
+  .scale-100 {
+    scale: 1;
+  }
+}
+
+@media (max-width: 400px) and (max-height: 800px) {
+  .hide-0-to-800-height {
+    display: none;
+  }
+
+  .reduce-height-0-to-800 {
+    height: 400px;
+  }
+
+  .scale-100 {
+    scale: 1;
   }
 }

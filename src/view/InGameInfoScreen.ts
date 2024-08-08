@@ -4,8 +4,7 @@ import { Controller } from "../Contoller";
 import { AssetRepository } from "../assets/AssetRepository";
 
 export class InGameInfoScreen {
-  private BACKGROUND_IMAGE_PATH =
-    "http://alex-portfolio.local/wp-content/uploads/intro-bg.png";
+  private BACKGROUND_IMAGE_PATH = "/assets/uploads/intro-bg.png";
   private REFRESH_TIME = 100;
   private LEAVE_ANIMATION_DURATION = 500;
 

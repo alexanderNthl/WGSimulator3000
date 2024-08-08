@@ -93,114 +93,102 @@ export class Config {
   public readonly IMAGES = [
     {
       id: "reward-star",
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/star.png",
+      imagePath: "/assets/uploads/star.png",
     },
     {
       id: "design_intro_bg",
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/intro-bg.svg",
+      imagePath: "/assets/uploads/intro-bg.svg",
     },
     {
       id: "design_game_over_bg",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/design_game_over_bg.svg",
+      imagePath: "/assets/uploads/design_game_over_bg.svg",
     },
     {
       id: "iconPlay",
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/play-fill.svg",
+      imagePath: "/assets/uploads/play-fill.svg",
     },
     {
       id: "iconPause",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/pause-fill.svg",
+      imagePath: "/assets/uploads/pause-fill.svg",
     },
     {
       id: "iconMute",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/volume-mute-fill.svg",
+      imagePath: "/assets/uploads/volume-mute-fill.svg",
     },
     {
       id: "iconSound",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/volume-up-fill.svg",
+      imagePath: "/assets/uploads/volume-up-fill.svg",
     },
     {
       id: "medalFirst",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/medal-first.svg",
+      imagePath: "/assets/uploads/medal-first.svg",
     },
     {
       id: "medalSecond",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/medal-second.svg",
+      imagePath: "/assets/uploads/medal-second.svg",
     },
     {
       id: "medalThird",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/medal-third.svg",
+      imagePath: "/assets/uploads/medal-third.svg",
     },
     {
       id: "touch-indicator",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/touch-indicator.gif",
+      imagePath: "/assets/uploads/touch-indicator.gif",
     },
     {
       id: "spacebar-indicator",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/spacebar-indicator.gif",
+      imagePath: "/assets/uploads/spacebar-indicator.gif",
     },
   ];
   public readonly AUDIOS = [
     {
       id: "main-theme",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/main-theme.mp3",
+      imagePath: "/assets/uploads/main-theme.mp3",
     },
     {
       id: "game-over",
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/game-over.mp3",
+      imagePath: "/assets/uploads/game-over.mp3",
     },
     {
       id: "jump",
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/jump.mp3",
+      imagePath: "/assets/uploads/jump.mp3",
     },
     {
       id: "collectable",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/collectable.mp3",
+      imagePath: "/assets/uploads/collectable.mp3",
     },
     {
       id: "button",
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/button.mp3",
+      imagePath: "/assets/uploads/button.mp3",
     },
     {
       id: "new-ingame-highscore",
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/new-ingame-highscore2.mp3",
+      imagePath: "/assets/uploads/new-ingame-highscore2.mp3",
     },
   ];
   public readonly BACKGROUND_TEMPLATES: DrawableObjectTemplate[] = [
     {
       id: "bckgrnd_1",
       dimensions: { w: 5646, h: 400 },
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/bckgrnd_1.jpg",
+      imagePath: "/assets/uploads/bckgrnd_1.jpg",
     },
   ];
   public readonly COLLECTABLES_TEMPLATES: DrawableObjectTemplate[] = [
     {
       id: "clct_1",
       dimensions: { w: 59, h: 197 },
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/clct_1.png",
+      imagePath: "/assets/uploads/clct_1.png",
       hitBoxes: [{ xOff: 0, yOff: 0, w: 59, h: 197 }],
     },
     {
       id: "clct_2",
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/clct_2.png",
+      imagePath: "/assets/uploads/clct_2.png",
       dimensions: { w: 110, h: 196 },
       hitBoxes: [{ xOff: 0, yOff: 0, w: 110, h: 196 }],
     },
     {
       id: "clct_3",
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/clct_3.png",
+      imagePath: "/assets/uploads/clct_3.png",
       dimensions: { w: 62, h: 189 },
       hitBoxes: [{ xOff: 0, yOff: 0, w: 62, h: 189 }],
     },
@@ -209,22 +197,19 @@ export class Config {
     {
       id: "obst_dishes",
       dimensions: { w: 277, h: 162 },
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/obst_dishes.png",
+      imagePath: "/assets/uploads/obst_dishes.png",
       hitBoxes: [{ xOff: 77, yOff: 32, w: 180, h: 130 }],
     },
     {
       id: "obst_laundrey",
       dimensions: { w: 305, h: 247 },
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/obst_laundrey.png",
+      imagePath: "/assets/uploads/obst_laundrey.png",
       hitBoxes: [{ xOff: 10, yOff: 70, w: 295, h: 177 }],
     },
     {
       id: "obst_pigeon_ground_1",
       dimensions: { w: 217, h: 176 },
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/obst_pigeon_ground_1.png",
+      imagePath: "/assets/uploads/obst_pigeon_ground_1.png",
       hitBoxes: [
         { xOff: 17, yOff: 16, w: 90, h: 160 },
         { xOff: 17, yOff: 90, w: 200, h: 86 },
@@ -233,8 +218,7 @@ export class Config {
     {
       id: "obst_pigeon_ground_2",
       dimensions: { w: 198, h: 176 },
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/obst_pigeon_ground_2.png",
+      imagePath: "/assets/uploads/obst_pigeon_ground_2.png",
       hitBoxes: [
         { xOff: 0, yOff: 0, w: 75, h: 176 },
         { xOff: 0, yOff: 120, w: 190, h: 56 },
@@ -243,15 +227,13 @@ export class Config {
     {
       id: "obst_trash_1",
       dimensions: { w: 337, h: 136 },
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/obst_trash_1.png",
+      imagePath: "/assets/uploads/obst_trash_1.png",
       hitBoxes: [{ xOff: 0, yOff: 40, w: 337, h: 96 }],
     },
     {
       id: "obst_trash_2",
       dimensions: { w: 304, h: 238 },
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/obst_trash_2.png",
+      imagePath: "/assets/uploads/obst_trash_2.png",
       hitBoxes: [{ xOff: 0, yOff: 138, w: 304, h: 100 }],
     },
   ];
@@ -259,7 +241,7 @@ export class Config {
     // {
     //   id: "ch_alex",
     //   dimensions: { w: 269.2, h: 250 },
-    //   imagePath: "http://alex-portfolio.local/wp-content/uploads/ch_alex.png",
+    //   imagePath: "/assets/uploads/ch_alex.png",
     //   hitBoxes: [{ xOff: 13.67, yOff: 0, w: 30.1, h: 250 }],
     //   displayName: "Alex",
     //   frames: 4,
@@ -284,7 +266,7 @@ export class Config {
     {
       id: "ch_alex_2",
       dimensions: { w: 1368, h: 250 },
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/ch_alex_2.png",
+      imagePath: "/assets/uploads/ch_alex_2.png",
       hitBoxes: [{ xOff: 27.67, yOff: 0, w: 30.1, h: 240 }],
       displayName: "Alex",
       frames: 8,
@@ -309,7 +291,7 @@ export class Config {
     {
       id: "ch_oli",
       dimensions: { w: 340, h: 230 },
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/ch_oli.png",
+      imagePath: "/assets/uploads/ch_oli.png",
       hitBoxes: [{ xOff: 28.83, yOff: 16.88, w: 32.76, h: 215.8 }],
       displayName: "Oli",
       frames: 4,
@@ -334,7 +316,7 @@ export class Config {
     {
       id: "ch_nico",
       dimensions: { w: 1530, h: 250 },
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/ch_nico.png",
+      imagePath: "/assets/uploads/ch_nico.png",
       hitBoxes: [{ xOff: 43.83, yOff: 5, w: 28.76, h: 240 }],
       displayName: "Nico",
       frames: 9,
@@ -359,7 +341,7 @@ export class Config {
     {
       id: "ch_lotte",
       dimensions: { w: 1935, h: 250 },
-      imagePath: "http://alex-portfolio.local/wp-content/uploads/ch_lotte.png",
+      imagePath: "/assets/uploads/ch_lotte.png",
       hitBoxes: [{ xOff: 85, yOff: 5, w: 28.76, h: 240 }],
       displayName: "Lotte",
       frames: 10,
@@ -384,8 +366,7 @@ export class Config {
     {
       id: "ch_praline",
       dimensions: { w: 1069, h: 200 },
-      imagePath:
-        "http://alex-portfolio.local/wp-content/uploads/ch_praline.png",
+      imagePath: "/assets/uploads/ch_praline.png",
       hitBoxes: [{ xOff: 50, yOff: 100, w: 90, h: 100 }],
       displayName: "Praline",
       frames: 5,

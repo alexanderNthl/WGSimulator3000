@@ -3,8 +3,7 @@ import { Config } from "../Config";
 import { Controller } from "../Contoller";
 
 export class IntroScreen {
-  private BACKGROUND_IMAGE_PATH =
-    "http://alex-portfolio.local/wp-content/uploads/intro-bg.svg";
+  private BACKGROUND_IMAGE_PATH = "/assets/uploads/intro-bg.svg";
 
   private LEAVE_ANIMATION_DURATION = 1800;
 
